@@ -1,0 +1,432 @@
+\documentclass[12pt,english,pdftex,a4paper]{book}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{parameters}      % Here comes important parameters
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specify the used packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{preamble}        % Premable with the used packages
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Math upright symbols (see ISO 80000 and NIST SP 811)
+
+\global\long\def\dd{\mathrm{d}}
+\global\long\def\ee{\mathrm{e}}
+\global\long\def\ii{\mathrm{i}}
+
+\global\long\def\tr{\mathsf{{\scriptscriptstyle T}}}
+
+\global\long\def\diag{\operatorname{diag}}
+\global\long\def\Tr{\operatorname{Tr}}
+
+% Tensors; e.g., \tudu = tensor with up-down-up indices
+
+\global\long\def\tudu#1#2#3#4{?{\mbox{\ensuremath{#1}}}^{#2}{}_{#3}{}^{#4}?}
+\global\long\def\tdud#1#2#3#4{?{\mbox{\ensuremath{#1}}}{}_{#2}{}^{#3}{}_{#4}?}
+\global\long\def\tud#1#2#3{?{\mbox{\ensuremath{#1}}}^{#2}{}_{#3}?}
+\global\long\def\tdu#1#2#3{?{\mbox{\ensuremath{#1}}}{}_{#2}{}^{#3}?}
+\global\long\def\tuu#1#2#3{?{\mbox{\ensuremath{#1}}}{}^{#2}{}^{#3}?}
+\global\long\def\tdd#1#2#3{?{\mbox{\ensuremath{#1}}}{}_{#2}{}_{#3}?}
+
+% Lie derivative
+\global\long\def\Lie{\mathrm{\pounds}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thesis OUTLINE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The outline of the thesis that is a comprehensive summary of papers:
+% (optional items are given italic)
+% ============================================= Front matter
+% - Title page, recto
+% - Printing info (abstract), verso
+% - Dedication page, recto
+% - List of papers, recto
+% - Table of Contents , recto
+% - List of Figures/Tables, recto
+% - Preface (and/or/including author's contribution, acknowledgments), recto
+% - Abbreviations, recto
+% ============================================= Text
+% Part I. Comprehensive summary
+% - Chapter 1. Introduction
+% - Chapter 2, . . .
+% - Summary
+% - Svensk sammanfattning 
+% (A short summary in Swedish should be be included if the thesis 
+% is written in a foreign language.)
+% ============================================= Back matter
+% - References
+% ============================================= Appendix
+% Part II. Papers
+% - Paper 1, . . .
+% ============================================= Typography, A4
+% Paper: 210 x 297 (A4)
+% Text: 140 x 211
+% Font: 12pt
+% Inner offset: 8
+% Margins: 
+% T = 40, B = 46, T+B = 96
+% I = 38, O = 32, I+O = 70
+% ============================================= Typography, S5
+% Paper: 165 x 242 (S5)
+% Text: 140 x 211
+% Font: 11pt
+% Margins: 
+% T = 17.5, B = 17.5, T+B = 35
+% I = 22.5, O = 22.5, I+O = 45
+
+\frontmatter
+
+%----------------------------------------------------------------------------
+% TITLE PAGE
+%----------------------------------------------------------------------------
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\ifShowHalfPage
+  \pagenumbering{arabic}  % Set folio: F1, F2, ...
+  \renewcommand*{\thepage}{F\arabic{page}}
+  \ifSpaper
+    \includepdf[pages = {-}, scale = 0.93, offset = -5mm 1.5mm]
+      {cover/half-page.pdf}
+  \else
+    % dimensions = 174 x 246 scaled 0.828 = 144 x 204
+    \includepdf[pages = {-}, scale = 0.828, offset = -2mm 4mm]
+      {cover/half-page.pdf}
+  \fi
+  \cleardoublepage
+  \pagenumbering{roman}  % Set folio: i, ii, ...
+\fi
+
+\ifSpaper
+  \includepdf[pages = {-}, scale = 0.93, offset = -5mm 1.5mm]
+    {cover/title-page.pdf}
+\else
+  % dimensions = 174 x 246 scaled 0.828 = 144 x 204
+  \includepdf[pages = {-}, scale = 0.828, offset = -2mm 4mm]
+    {cover/title-page.pdf}
+\fi
+
+%----------------------------------------------------------------------------
+% PRINTING INFO
+%----------------------------------------------------------------------------
+
+% The printing info is on the title page verso.
+\clearpage
+~\vspace{183mm}
+
+% The abstract of the thesis will be printed on the spikblad 
+% which will be generated upon the electronic spikning. 
+% However, if the author believes it necessary to also include 
+% the abstract in the printed document this is were it should go.
+
+\noindent
+  Printed: 2017-10-23\\[5mm]
+  pp. i--\pageref*{lastPageOfFrontMatter},
+     1--\pageref*{lastPageOfPartI},
+     \copyright~2017 by \licAuthor\\[1mm]
+  Typeset in pdf\LaTeX
+
+\cleardoublepage
+
+%----------------------------------------------------------------------------
+% List of Papers
+%----------------------------------------------------------------------------
+
+\fancypagestyle{plain}
+{
+    \fancyhf{}
+    \fancyfoot[LE,RO]{\thepage}
+    \fancyfoot[RE,LO]{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\sc\leftmark}
+\fancyhead[LO]{\sc\rightmark}
+
+\input{front-matter/list-of-papers.tex}
+
+%----------------------------------------------------------------------------
+% CONTENTS
+%----------------------------------------------------------------------------
+
+\cleardoublepage
+
+\pdfbookmark[1]{Table of Contents}{indexname}
+\chapter*{Contents}
+\markboth{Contents}{Contents}
+\tocwithouttitle
+
+\chapter*{Illustrations}
+\markboth{Illustrations}{Illustrations}
+\addcontentsline{toc}{chapter}{Illustrations}
+\vspace{0.2em}
+
+\subsection*{List of Figures}\vspace{-0.5em}
+\lofwithouttitle\vspace{0.2em}
+
+\subsection*{List of Tables}\vspace{-0.5em}
+\lotwithouttitle
+
+\cleardoublepage
+
+\input{front-matter/preface.tex}
+\input{front-matter/notation.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN MATTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\label{lastPageOfFrontMatter}
+\cleardoublepage
+
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{1}
+
+\renewcommand{\thechapter}{\arabic{chapter}}
+\setcounter{chapter}{0}
+
+\mainmatter
+
+\pagestyle{fancy}
+
+\newcommand{\ChapterThumb}{\ThumbBox{Chapter \arabic{chapter}}{0}}
+
+\fancypagestyle{plain}
+{
+    \fancyhf{}
+    \fancyfoot[LE,RO]{\thepage}
+    \fancyfoot[RE,LO]{\small\textcolor{black!35}{
+        \ifSpaper\else ~\\[-1ex] \fi
+        \textcolor{black!20}{\rule{75mm}{0.4pt}}~\\
+        \licAuthor,
+        \emph{\licTitle},
+        SU \licYear
+        }
+    }
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+    \fancyhead[CE]{\ChapterThumb}
+    \fancyhead[CO]{\ChapterThumb}
+}
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\small\leftmark}
+\fancyhead[LO]{\small\rightmark}
+\fancyhead[CE]{\ChapterThumb}
+\fancyhead[CO]{\ChapterThumb}
+
+\phantomsection
+\addcontentsline{toc}{part}{Part I \;Comprehensive Summary}
+
+%----------------------------------------------------------------------------
+% MAIN TEXT
+%----------------------------------------------------------------------------
+
+\input{chapters/intro.tex}
+\input{chapters/chapter-2.tex}
+\input{chapters/chapter-3.tex}
+\input{chapters/summary.tex}
+\input{chapters/summary-swe.tex}
+
+%----------------------------------------------------------------------------
+% REFERENCES
+%----------------------------------------------------------------------------
+
+\cleardoublepage
+\addtocounter{chapter}{1}
+\renewcommand{\bibname}{References}
+\renewcommand{\ThumbBoxColor}{red}
+
+\newcommand{\RefsBox}{\ThumbBox{Refs}{0}}
+\fancypagestyle{plain}
+{
+   \fancyhead[CE]{\RefsBox}
+   \fancyhead[CO]{\RefsBox}
+}
+\fancyhead[CE]{\RefsBox}
+\fancyhead[CO]{\RefsBox}
+
+\bibliographystyle{biblio/JHEP}
+\bibliography{biblio/lic-thesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAPERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\label{lastPageOfPartI}
+\cleardoublepage
+
+\renewcommand{\RefsBox}{}
+
+\fancypagestyle{plain}
+{
+    \fancyhf{}
+    \fancyfoot[LE,RO]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+
+\newcommand{\paperSection}[6]{  % Arguments:
+  \def\PaperID{#1}           % ID of the paper I, II, ...
+  \def\PaperTitle{#2}        % Title that goes to the table of contents
+  \def\PaperInfo{#3}         % Info that goes to the separation page
+  \def\PaperFile{#4}         % Filename of the PDF in papers/ folder
+  \def\PaperFolioX{#5}       % X position of our folio (page number)
+  \def\PaperFolioY{#6}       % Y position of our folio (page number)
+  \labelPaper{\PaperID}
+  \addtocounter{chapter}{1}
+  \pagestyle{plain}
+  \phantomsection
+  \addcontentsline{toc}{chapter}{\numberline{\hspace{-2mm}\PaperID}\PaperTitle}
+  ~ % No text here (everything is in the overlay)
+  \ThumbBoxLarge{Paper~\PaperID}{-5}
+  \overlayPaperInfo{\PaperInfo}
+  \cleardoublepage
+}
+
+\newcommand{\includePDF}[1]{
+  \ifIncludePDFs
+    \pagestyle{empty}
+    \includepdf[pages={-}, noautoscale=true, #1,
+      pagecommand={
+        \noindent\ThumbBox{Paper~\PaperID}{-5}
+        \overlayPaperFolio{\thepage}{\PaperFolioX}{\PaperFolioY}
+      }]{papers/\PaperFile.pdf}
+    \cleardoublepage
+  \fi
+}
+
+\phantomsection
+\addcontentsline{toc}{part}{Part II \;Papers}
+\renewcommand{\ThumbBoxColor}{black}
+
+%----------------------------------------------------------------------------
+% Paper I
+%----------------------------------------------------------------------------
+
+\paperSection{I}
+  {Paper title}
+  {Authors,
+    \emph{Paper title}, 
+    [\href{https://arxiv.org/abs/1706.07806}{1706.07806}]}
+  {1706-07806}{2}{\ifSpaper 8.7 \else 20 \fi}
+\label{art:A} % PDF
+
+\renewcommand{\PaperSubFolioFontSize}{10}
+\setcounter{PaperSubFolio}{0}
+
+\ifSpaper
+  \includePDF{scale=0.96,offset=-2mm 0mm}
+\else
+  \includePDF{scale=1,offset=2mm 0mm}
+\fi
+
+%----------------------------------------------------------------------------
+% Paper II
+%----------------------------------------------------------------------------
+
+\paperSection{II}
+  {Paper title}
+  {Authors, 
+    \emph{Paper title}, 
+    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
+  {1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
+\label{art:B}
+
+\renewcommand{\PaperSubFolioFontSize}{10}
+\setcounter{PaperSubFolio}{0}
+
+\ifSpaper
+  \includePDF{scale=0.96,offset=-2mm 0mm}
+\else
+  \includePDF{scale=1,offset=2mm 0mm}
+\fi
+
+%----------------------------------------------------------------------------
+% Paper III
+%----------------------------------------------------------------------------
+
+\paperSection{III}
+  {Paper title}
+  {Authors,
+    \emph{Paper title}, 
+    Phys.~Rev.~D96 (2017) no.~6, 064003, 
+    doi:\href{http://doi.org/10.1103/PhysRevD.96.064003}
+    {10.1103/PhysRevD.96.064003}, 
+    [\href{https://arxiv.org/abs/1703.07787}{1703.07787}]}
+  {1703-07787}{1}{\ifSpaper 19.1 \else 20.8 \fi}
+\label{art:C}
+
+\renewcommand{\PaperSubFolioFontSize}{9}
+\setcounter{PaperSubFolio}{1}
+
+\ifSpaper
+  \includePDF{scale=0.87,offset=-2mm 0mm}
+\else
+  \includePDF{scale=0.98,offset=1mm 0mm}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Show LAYOUT INFO (optional)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{empty}
+
+\ifShowLayout
+  \setcounter{chapter}{1}
+  \phantomsection
+  \renewcommand*{\FrameEdgeColor}{blue!40}
+  \renewcommand*{\ShowSubGridColor}{gray!40}
+  \renewcommand*{\ShowGridColor}{gray!70}
+  \renewcommand*{\ShowFrameColor}{\color{red!40}}
+  \renewcommand*{\ShowGridTextColor}{gray}
+  % \renewcommand*{\ShowFramePicture}{}
+  \AddToShipoutPictureBG{
+     \ThumbBoxLarge{Paper~L}{0}
+     \ThumbBox{Tab 5}{4}
+     \ThumbBox{Tab 10}{9}
+  }
+  \noindent
+  % \textsf{\textbf{Layout info}}\\[2mm]
+  \setvaluestextsize{\footnotesize}
+  \footnotesize
+  \printinunitsof{mm}{\pagevalues}\\
+  ~\verb| \marginparwidth| = 
+  \printinunitsof{mm}\prntlen{\marginparwidth}
+  ~\verb|   \TopOffset| = 
+  \printinunitsof{mm}\prntlen{\TopOffset}\\
+  ~\verb| \FontSize| = \FontSize
+  \ifSpaper
+     \setlayoutscale{0.45}
+  \else
+     \setlayoutscale{0.5}
+  \fi
+  \pagediagram
+  \setvaluestextsize{\normalsize}
+  \normalsize
+\else
+  ~
+\fi
+
+\end{document}

@@ -1,0 +1,111 @@
+%& -job-name=lic-output
+\documentclass[12pt,english,pdftex,a4paper]{book}
+
+\input{parameters}      % Here comes important parameters
+\input{preamble}        % Premable with the used packages
+
+%----------------------------------------------------------------------------
+
+\begin{document}
+
+\frontmatter
+
+%----------------------------------------------------------------------------
+% FRONT MATTER
+%----------------------------------------------------------------------------
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\includepdf[
+pages={1-1},
+noautoscale=true,
+scale=1,
+offset=0mm 20mm
+]{lic-input.pdf}
+
+\includepdf[
+   pages={2-6},
+   noautoscale=true,
+   scale=1,
+   offset=0mm 0mm
+]{lic-input.pdf}
+
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{1}
+
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+\mainmatter
+
+%----------------------------------------------------------------------------
+% MAIN TEXT
+%----------------------------------------------------------------------------
+
+\pagestyle{empty}
+
+\newcommand{\includeChapter}[2]{
+  \setcounter{chapter}{#1}
+  \includepdf[pages={#2},
+    noautoscale=true, scale=1, offset=0mm 0mm,
+    pagecommand={\PutThumb}
+  ]{lic-input.pdf}
+}
+
+\newcommand{\PutThumb}{\ThumbBox{Chapter~\arabic{chapter}}{0}}
+
+\includeChapter{1}{7-7}
+\includeChapter{2}{8-10}
+\includeChapter{3}{11-18}
+\includeChapter{4}{19-28}
+\includeChapter{5}{29-37}
+\includeChapter{6}{38-38}
+
+%----------------------------------------------------------------------------
+% REFERENCES
+%----------------------------------------------------------------------------
+
+\renewcommand{\ThumbBoxColor}{red}
+\renewcommand{\PutThumb}{\ThumbBox{Refs}{0}}
+
+\includeChapter{7}{39-44}
+
+%----------------------------------------------------------------------------
+% PAPERS
+%----------------------------------------------------------------------------
+
+\renewcommand{\ThumbBoxColor}{black}
+
+\renewcommand{\PutThumb}{\ThumbBoxLarge{Paper~\Roman{chapter}}{0}%
+\begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+  \draw [white,fill=white]  
+     ($(current page.center) + (-60mm,-50mm)$) rectangle ++(120mm,100mm);
+  \node [text width=140mm,align=center] 
+  at ($(current page.center) + (0,25mm)$) {\Large\textsf{\textbf{
+  Dark matter capture, subdominant WIMPs,\\[1mm]
+  and neutrino observatories\\~
+  }}};
+\end{tikzpicture}
+}
+\includeChapter{1}{45-45}
+
+\renewcommand{\PutThumb}{\ThumbBox{Paper~\Roman{chapter}}{0}}
+\includeChapter{1}{46-68}
+
+\renewcommand{\PutThumb}{\ThumbBoxLarge{Paper~\Roman{chapter}}{0}%
+\begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+  \draw [white,fill=white]  
+     ($(current page.center) + (-60mm,-50mm)$) rectangle ++(120mm,100mm);
+  \node [text width=140mm,align=center] 
+  at ($(current page.center) + (0,25mm)$) {\Large\textsf{\textbf{
+  NMSSM Higgs boson search strategies at the LHC\\[1mm]
+  and the mono-Higgs signature in particular\\~
+  }}};
+\end{tikzpicture}
+}
+\includeChapter{2}{69-69}
+
+\renewcommand{\PutThumb}{\ThumbBox{Paper~\Roman{chapter}}{0}}
+\includeChapter{2}{70-}
+
+\end{document}

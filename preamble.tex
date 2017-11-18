@@ -1,0 +1,516 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% preamble.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+
+\usepackage{geometry}
+\geometry{verbose,tmargin=40mm,bmargin=46mm,lmargin=38mm,rmargin=32mm}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+
+\usepackage{color}
+\usepackage{babel}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathdots}
+\usepackage{stmaryrd}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[unicode=true]{hyperref}
+
+\hypersetup{
+  pdftitle           = {\licTitle},
+  pdfauthor          = {\licAuthor},
+  pdfsubject         = {Licentiate Thesis in Theoretical Physics},
+  bookmarks          = true,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  breaklinks         = true,
+  pdfborder          = {0 0 0},
+  pdfborderstyle     = {},
+  backref            = false,
+  colorlinks         = true,
+  linkcolor          = blue,
+  urlcolor           = blue,
+  citecolor          = blue,
+  anchorcolor        = green,
+  pdfstartview       = {Fit},
+  pdfpagelayout      = {TwoPageRight},
+  linktocpage, pagebackref, hyperfigures
+}
+
+\ifSpaper
+  \hypersetup{colorlinks=false}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% S5 papersize = { 165mm, 242mm } * 12 / 10.95 + { 6mm, 0mm }
+
+\ifSpaper
+  \geometry{
+    verbose,
+    papersize = { 184.82mm, 265.2mm }, 
+    tmargin   = 27.1mm,
+    bmargin   = 27.1mm,
+    lmargin   = 22.41mm,
+    rmargin   = 22.41mm,
+    marginparwidth = 20mm
+  }
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Optionally show the diagram of the page layout
+
+\ifShowLayout
+  \usepackage[noframe]{showframe} 
+  \usepackage{layouts}
+  \makeatletter
+  \let\FontSize=\f@size
+  \makeatother
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use sanserif for headings
+
+\usepackage[{sf,bf}]{titlesec}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage[margin=10pt,font=small,labelfont=bf]{caption} 
+\usepackage[margin=10pt,labelfont=bf]{caption} 
+
+% Turn off nasty worning for overfull and underfull hboxes
+% \hbadness=10000
+% \hfuzz=50pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{cite} % Compressed citations
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pdfmapfile{+rsfso.map}  % More upright mathscr
+\DeclareSymbolFont{rsfso}{U}{rsfso}{m}{n}
+\DeclareSymbolFontAlphabet{\mathscr}{rsfso}
+
+% \usepackage[scaled=1.1]{rsfso}   % Turn also mathcal into rfso
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{etoolbox} % a toolbox of programming tools
+
+\usepackage{xfrac}  % Split-level fractions (\sfrac)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{graphicx}
+%\DeclareGraphicsExtensions{.png, .jpg, .jpeg, .pdf} %GIF doesn't work
+%\pdfcompresslevel=9
+%\graphicspath{{figures/}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tensind} 
+\tensordelimiter{?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\let\myHlineC\hline
+
+\newcommand{\bHlineC}{
+  \renewcommand{\hline}{\arrayrulecolor{lightgray}\myHlineC\arrayrulecolor{black}}
+  \newcolumntype{|}{!{\color{lightgray}\vline}}
+}
+
+\newcommand{\eHlineC}{
+  \renewcommand{\hline}{\myHlineC}
+  \newcolumntype{|}{!{\color{black}\vline}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\bSe}{\begin{subequations}} 
+\newcommand{\eSe}{\end{subequations}}
+
+\newcommand{\bWe}{\begin{widetext}} 
+\newcommand{\eWe}{\end{widetext}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\allowdisplaybreaks
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Remove if we do not have tikz
+
+\usepackage{tikz,amsmath,amssymb,bm,color,cancel}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathreplacing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{lastpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Load fancyhdr after specifying the geometry (bogus if loaded before)
+\usepackage{fancyhdr}
+\usepackage[iso]{datetime}
+
+\fancypagestyle{empty}
+{
+    \fancyhf{} % clear all header and footer fields
+}
+
+\fancypagestyle{plain}
+{
+    \fancyhf{} % clear all header and footer fields
+    \fancyfoot[LE,RO]{\thepage}
+    \fancyfoot[RE,LO]{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancyhf{} % clear all header and footer fields
+
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\small\leftmark}
+\fancyhead[LO]{\small\rightmark}
+\fancyhead[CE]{}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}
+
+% Don't convert marks to upperase
+
+% printindex sets the pagestyle to plain, to counter this, we can redefine this pagestyle. 
+% If we use the fancy pagestyle throughout our document add the following to the preamble:
+%\renewcommand{\ps@plain}{\pagestyle{fancy}}
+
+\frontmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[titletoc]{appendix}
+
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+
+\renewcommand{\sectionmark}[1]{ \markright{\thesection\ #1} }
+\renewcommand{\chaptermark}[1]{ \markboth{\chaptername\ \thechapter.\ #1}{\chaptername\ \thechapter.\ #1} }
+\renewcommand{\tocetcmark}[1]{ \markboth{#1}{#1} }
+
+% clear empty double pages
+
+%\let\origdoublepage\cleardoublepage
+%\newcommand{\clearemptydoublepage}{%
+%  \clearpage
+%  {\pagestyle{empty}\origdoublepage}%
+%}
+%\let\cleardoublepage\clearemptydoublepage
+
+\usepackage{emptypage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\numberwithin{equation}{chapter}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+\numberwithin{figure}{chapter}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+
+\numberwithin{table}{chapter}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \footnotesep is the space between footnotes:
+\setlength{\footnotesep}{4mm}
+
+% \footins is the space between the text body and the footnotes:
+\setlength{\skip\footins}{6mm}
+
+\selectlanguage{english}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% To include papers:
+
+\usepackage{pdfpages}
+\usepackage{ifoddpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tabularx}
+
+\newenvironment{pmatrixc}{
+  \bgroup\renewcommand{\arraystretch}{1}\begin{pmatrix}
+}{
+  \end{pmatrix}\egroup
+}
+
+\newenvironment{pmatrixr}{
+  \bgroup\renewcommand{\arraystretch}{1}\begin{pmatrix*}[r]
+}{
+  \end{pmatrix*}\egroup
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\InnerEdge}
+\newlength{\OuterEdge}
+\newcommand{\FrameEdgeColor}{blue!30}
+\newcommand{\ShowSubGridColor}{gray!15}
+\newcommand{\ShowGridColor}{gray!25}
+\newcommand{\ShowGridTextColor}{gray!50}
+
+\ifSpaper
+  \setlength{\InnerEdge}{6mm}
+\else
+  \setlength{\InnerEdge}{8mm}
+\fi
+
+\ifSpaper
+   \setlength{\OuterEdge}{6mm}
+\else
+   \setlength{\OuterEdge}{6mm}
+\fi
+
+\newcommand{\MarkFrameEdges}{%   
+  \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+      \checkoddpage\ifoddpage
+        \draw [dashed,\FrameEdgeColor] 
+          ($(current page.south west) + (\InnerEdge,0)$) -- 
+          ($(current page.south west) + (\InnerEdge,\paperheight)$);
+        \draw [dashed,\FrameEdgeColor] 
+          ($(current page.south east) + (-\OuterEdge,0)$) -- 
+          ($(current page.south east) + (-\OuterEdge,\paperheight)$);
+      \else
+        \draw [dashed,\FrameEdgeColor] 
+          ($(current page.south east) + (-\InnerEdge,0)$) -- 
+          ($(current page.south east) + (-\InnerEdge,\paperheight)$);
+        \draw [dashed,\FrameEdgeColor] 
+          ($(current page.south west) + (\OuterEdge,0)$) -- 
+          ($(current page.south west) + (\OuterEdge,\paperheight)$);
+      \fi
+  \end{tikzpicture}
+}
+
+\newcommand{\ShowGrid}{%   
+  \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+      \checkoddpage\ifoddpage
+        \draw[step=1,\ShowSubGridColor,very thin] 
+            ($(current page.south west) + (0,0)$) grid 
+            ($(current page.south west) + (\paperwidth,\paperheight)$);
+        \draw[step=10,\ShowGridColor,very thin] 
+            ($(current page.south west) + (0,0)$) grid 
+            ($(current page.south west) + (\paperwidth,\paperheight)$);
+        \foreach \i in {1,...,30} {
+            \node [anchor=west,align=right,\ShowGridTextColor] 
+            at ($(current page.south west) + (1,\i * 10)$) {$\i$};
+        }
+        \foreach \i in {1,...,21} {
+            \node [anchor=south,align=center,\ShowGridTextColor] 
+            at ($(current page.south west) + (\i * 10,1)$) {$\i$};
+        }
+        \draw [thin,red] (current page.south west)
+           -- ($(current page.south west) + (10,10)$);
+      \else
+        \draw[step=1,\ShowSubGridColor,very thin] 
+            ($(current page.south east) + (0,0)$) grid 
+            ($(current page.south east) + (-\paperwidth,\paperheight)$);
+        \draw[step=10,\ShowGridColor,very thin] 
+            ($(current page.south east) + (0,0)$) grid 
+            ($(current page.south east) + (-\paperwidth,\paperheight)$);
+        \foreach \i in {1,...,30} {
+            \node [anchor=east,align=right,\ShowGridTextColor] 
+            at ($(current page.south east) + (-1,\i * 10)$) {$\i$};
+        }
+        \foreach \i in {1,...,21} {
+            \node [anchor=south,align=center,\ShowGridTextColor] 
+            at ($(current page.south east) + (-\i * 10,1)$) {$\i$};
+        }
+        \draw [thin,red] (current page.south east)
+           -- ($(current page.south east) + (-10,10)$);
+      \fi
+  \end{tikzpicture}
+}
+
+\ifx\ShowFrameColor\unknown\else
+  \renewcommand*\ShowFrameColor{\color{red!10}}
+  \AddToShipoutPictureBG{\ShowFramePicture} 
+  \ifShowGrid
+    \AddToShipoutPictureBG{\ShowGrid}
+  \fi
+  \AddToShipoutPictureFG{\MarkFrameEdges}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+\newlength{\TopOffset}
+\newlength{\ThumbBoxH}
+\newlength{\ThumbBoxW}
+\newlength{\ThumbBoxX}
+\newlength{\ThumbBoxLargeX}
+\newlength{\ThumbBoxY}
+\newlength{\OuterMargin}
+
+\newcommand{\ThumbBoxColor}{black!30}
+
+\setlength{\TopOffset}{25.4mm+\hoffset+\topmargin+\headheight+\headsep}
+\setlength{\ThumbBoxH}{23mm}
+\setlength{\ThumbBoxW}{70mm}
+\setlength{\ThumbBoxX}{14mm}
+
+\ifSpaper
+   \setlength{\ThumbBoxLargeX}{30mm}
+\else
+   \setlength{\ThumbBoxLargeX}{24mm}
+\fi
+
+\setlength{\ThumbBoxY}{\TopOffset-\ThumbBoxH/2}
+
+\setlength{\OuterMargin}{25.4mm+\hoffset+\evensidemargin}
+
+\newcommand{\ThumbBox}[2]{%
+  \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+      \checkoddpage\ifoddpage
+        \node [anchor=north,rotate=90,draw,rectangle, very thin, rounded corners=5pt,
+          color=\ThumbBoxColor,fill=\ThumbBoxColor,minimum width=\ThumbBoxH,minimum height=\ThumbBoxW] 
+          at ($(current page.north east) - (\ThumbBoxX,\ThumbBoxY+\value{chapter}*\ThumbBoxH+#2*\ThumbBoxH)$) 
+          {};
+        \node [anchor=north,rotate=90,text width=\ThumbBoxH,align=flush center,font=\sffamily] 
+          at ($(current page.north east) - (\ThumbBoxX-1,\ThumbBoxY+\value{chapter}*\ThumbBoxH+#2*\ThumbBoxH)$) 
+          {\color{white}\textbf{#1}};
+      \else
+        \node [anchor=south,rotate=90,draw,rectangle, very thin, rounded corners=5pt,
+          color=\ThumbBoxColor,fill=\ThumbBoxColor,minimum width=\ThumbBoxH,minimum height=\ThumbBoxW] 
+          at ($(current page.north west) - (-\ThumbBoxX,\ThumbBoxY+\value{chapter}*\ThumbBoxH+#2*\ThumbBoxH)$) 
+          {};
+        \node [anchor=south,rotate=90,text width=\ThumbBoxH,align=flush center,font=\sffamily] 
+          at ($(current page.north west) - (-\ThumbBoxX+1,\ThumbBoxY+\value{chapter}*\ThumbBoxH+#2*\ThumbBoxH)$) 
+          {\color{white}\textbf{#1}};
+      \fi
+  \end{tikzpicture}
+}
+
+\newcommand{\ThumbBoxLarge}[2]{%
+  \checkoddpage\ifoddpage
+    \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+      \node [anchor = west,
+        draw, rectangle, very thin, rounded corners=5pt, inner sep = 5,
+        fill = \ThumbBoxColor, color = \ThumbBoxColor,
+        minimum height = \ThumbBoxH, minimum width = \ThumbBoxW, text width = \ThumbBoxW,
+        align = flush left, font = \sffamily] 
+        at ($(current page.north east) - (\OuterMargin+\ThumbBoxLargeX,\ThumbBoxY+\value{chapter}*\ThumbBoxH+#2*\ThumbBoxH)$)
+        {\color{white}\fontsize{23pt}{0em}\selectfont\textbf{~~#1}};
+    \end{tikzpicture}
+  \fi
+}
+
+\newcommand{\labelPaper}[1]{%
+   \let\orglabel\label
+   \let\label\@gobble
+   \edef\@currentlabel{#1\unskip}%
+   \let\label\orglabel
+}
+
+\newcommand{\overlayPaperInfo}[1]{%
+  \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+    \node [anchor=south east,align=flush left,text width=\textwidth, inner sep = 0] 
+      at ($(current page.north east) - (\OuterMargin,\TopOffset+\textheight)$) {#1};
+  \end{tikzpicture}
+}
+
+\newcounter{PaperSubFolio}
+\newcommand{\PaperSubFolioFontSize}{12}
+
+\ifShowLayout
+  \tikzset{folioFill/.style={red!10}}
+\else
+  \tikzset{folioFill/.style={white,fill=white}}
+\fi
+
+\newcommand{\overlayPaperFolio}[3]{%
+  \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+      \checkoddpage\ifoddpage
+        \node [anchor=south,draw,rectangle,folioFill] 
+          at ($(current page.south) + (#2,#3)$)
+          {\fontsize{\PaperSubFolioFontSize}{0}\selectfont\color{black}
+          \textsc{Paper \PaperID}~--~\thePaperSubFolio~\color{black!60}(\thepage)};
+      \else
+        \node [anchor=south,draw,rectangle,folioFill] 
+          at ($(current page.south) + (-#2,#3)$)
+          {\fontsize{\PaperSubFolioFontSize}{0}\selectfont\color{black}
+          \textsc{Paper \PaperID}~--~\thePaperSubFolio~\color{black!60}(\thepage)};
+      \fi
+  \end{tikzpicture}
+  \stepcounter{PaperSubFolio}
+}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand{\lofwithouttitle}{\@starttoc{lof}}
+\newcommand{\lotwithouttitle}{\@starttoc{lot}}
+\newcommand{\tocwithouttitle}{\@starttoc{toc}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tocloft}
+
+\cftpagenumbersoff{part}
+
+\renewcommand{\cftpartfont}{\scshape\normalsize}
+\renewcommand{\cftpartpagefont}{\bfseries\rmfamily\normalsize}
+\renewcommand{\cftbeforepartskip}{6mm}
+\renewcommand{\cftpartafterpnum}{\vspace{2mm}}
+
+\renewcommand{\cftchapfont}{\rmfamily\normalsize}
+\renewcommand{\cftchappagefont}{\rmfamily\normalsize}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\setlength{\cftchapindent}{8mm}
+\setlength{\cftbeforechapskip}{1mm}
+
+\renewcommand{\cftsecfont}{\rmfamily\normalsize}
+\renewcommand{\cftsecpagefont}{\rmfamily\normalsize}
+\setlength{\cftsecindent}{14mm}
+
+\setlength{\cftsubsecindent}{19mm}
+\setlength{\cftsubsubsecindent}{26mm}
+
+\setlength{\cftbeforefigskip}{\cftbeforechapskip}
+\setlength{\cftbeforetabskip}{\cftbeforechapskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% chapters/intro.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+
+The outline of the thesis that is a comprehensive summary of papers 
+(optional items are given italic)
+
+\begin{itemize}
+
+  \item Front matter
+  \begin{enumerate}
+    \item Title page, recto
+    \item Printing info (\emph{abstract}), verso
+    \item \emph{Dedication page}, recto
+    \item List of papers, recto
+    \item Table of Contents, recto
+    \item \emph{List of Figures/Tables}, recto
+    \item \emph{Preface}\\
+    (including author's contribution and
+    acknowledgments),
+    recto
+    \item \emph{Abbreviations}, recto
+  \end{enumerate}
+  
+  \item Part I. Comprehensive summary
+    \begin{enumerate}
+      \item Chapter 1. Introduction
+      \item Chapter 2, . . .
+      \item Summary
+      \item Svensk sammanfattning 
+      (A short summary in Swedish should be be included if the thesis is
+      written in a foreign language.)
+      \item References
+    \end{enumerate}
+  \item Part II. Papers
+    \begin{enumerate}
+      \item Paper 1, . . .
+      \item Paper 2, . . .
+    \end{enumerate}
+
+\end{itemize}
+
+\subsection*{Typography, \textbf{A4}}
+
+\begin{itemize}
+\item Paper: 210 mm $\times$ 297 mm
+\item Text: 140 mm $\times$ 211 mm
+\item Font: 12 pt
+\item Inner offset: 8 mm
+\item Margins:\\
+T = 40, B = 46, T+B = 96\\
+I = 38, O = 32, I+O = 70
+\end{itemize}
+
+\subsection*{Typography, \textbf{S5}}
+
+\begin{itemize}
+\item Paper: 165 mm $\times$ 242 mm
+\item Text: 140 mm $\times$ 211 mm
+\item Font: 11 pt
+\item Margins:\
+T = 17.5, B = 17.5, T+B = 35\\
+I = 22.5, O = 22.5, I+O = 45
+\end{itemize}
+
+\clearpage
+
+\section*{S5 output}
+
+By default, the output is A4 (with 12 pt font). 
+To generate S5:
+
+\begin{enumerate}
+  \item Uncomment \texttt{\textbackslash{}Spapertrue} flag in 
+    \texttt{parameters.tex}.
+  \item Compile \texttt{lic-thesis.tex}
+  \item Compile \texttt{lic-thesis-S5.tex}
+\end{enumerate}
+
+The output \texttt{lic-thesis-S5.pdf} will be in the S5 format.
+
+By enabling \texttt{\textbackslash{}Spapertrue} flag, 
+the margins of the master are prepared to be scaled to S5. 
+Namely, the master pdf (coming out from \texttt{lic-thesis.tex}) 
+is scaled by \texttt{lic-thesis-S5.tex} so the original 
+12 pt font will be scaled down to 11 pt in the resulting S5 output.
+
+\paragraph*{Caution:} If you want to continue working with the
+A4 output, do not forget to comment \texttt{\textbackslash{}Spapertrue} 
+flag in \texttt{parameters.tex}.
+
+\section*{Included PDFs}
+
+You can include PDFs of the included papers by enabling
+\texttt{\textbackslash{}IncludePDFstrue} flag in \texttt{parameters.tex}.
+By default, the inclusion is disabled (as it slows done the compilation).
+
+The page numbers of the included PDF will be overwritten by
+the page numbers of the thesis.
+The included papers will be then marked by twofold page numbers. 
+For instance,
+the folio \texttt{Paper\,II\,\textendash \,5\,(81)} marks a page
+from Paper II having the internal (article) page number 5 and the
+overall (thesis) page number 81.
+To modify the position of the page numbers, see the arguments 
+\texttt{\#5} and \texttt{\#6} in \texttt{\textbackslash{}paperSection}.
+To debug the positions, you can temporarily enable the flags
+\texttt{\textbackslash{}ShowLayouttrue} and
+\texttt{\textbackslash{}ShowGridtrue} in 
+\texttt{parameters.tex}.
+The macro \texttt{\textbackslash{}overlayPaperFolio} is responsible 
+for emitting the thumb marks and page numbers on each page of the PDF. 
+It can be found in \texttt{preamble.tex}.

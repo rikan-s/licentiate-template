@@ -1,0 +1,35 @@
+\documentclass[12pt]{article}
+\usepackage[margin=0cm,nohead]{geometry}
+\usepackage[active,tightpage]{preview}
+
+\usepackage{mathptmx}
+
+\usepackage{tikz,amsmath,amssymb,mathtools,mathrsfs,bm,color,cancel}
+
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathmorphing}
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+  \draw [white] (0,0) rectangle (-17,24.2);
+
+  \node [anchor=north west, align=left,text width=140mm,inner sep=0] at (-15,22.5) {
+    \fontsize{14}{1em}\selectfont
+    Title comes here (see \texttt{cover/half-page.tex})\\[4mm]
+    \fontsize{15}{1em}\selectfont
+    Author's name};
+
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

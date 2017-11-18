@@ -1,0 +1,146 @@
+\documentclass[english,english,pdftex]{book}
+
+\usepackage{lmodern}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=27.5mm,bmargin=27.5mm,lmargin=22.5mm,rmargin=22.5mm}
+\pagestyle{empty}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{babel}
+
+\usepackage[unicode=true]{hyperref}
+
+\makeatletter
+
+\usepackage{pdfpages}
+\usepackage{ifoddpage}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+
+\newif\ifShowHalfPage
+\newif\ifShowLayout
+\newif\ifShowGrid
+\newif\ifSpaper
+\newif\ifSclip
+
+\input{parameters}
+
+\ifSclip
+  \geometry{
+    verbose,
+    papersize = { 165mm, 242mm },
+    tmargin   = 0mm,
+    bmargin   = 0mm,
+    lmargin   = 0mm,
+    rmargin   = 0mm
+  }
+\fi
+
+\makeatother
+
+\usepackage[unicode=true]{hyperref}
+
+\hypersetup{
+  pdftitle           = {\licTitle},
+  pdfauthor          = {\licAuthor},
+  pdfsubject         = {Licentiate Thesis in Theoretical Physics},
+  bookmarks          = true,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  breaklinks         = true,
+  pdfborder          = {0 0 0},
+  pdfborderstyle     = {},
+  backref            = false,
+  colorlinks         = true,
+  linkcolor          = blue,
+  urlcolor           = blue,
+  citecolor          = blue,
+  anchorcolor        = green,
+  pdfstartview       = {Fit},
+  pdfpagelayout      = {TwoPageRight},
+  linktocpage, pagebackref, hyperfigures
+}
+
+\begin{document}
+\newcommand{\showGuides}{
+  \begin{tikzpicture}[x=1mm, y=1mm, remember picture, overlay]
+    \checkoddpage\ifoddpage
+      \draw  [black!25,dashed] ($(current page.north west) + (170mm,-27.5mm)$) -- 
+        ($(current page.north west) + (\paperwidth,-27.5mm)$);
+      \draw  [black!25,dashed] ($(current page.south west) + (170mm,27.5mm)$) -- 
+        ($(current page.south west) + (\paperwidth,27.5mm)$);
+      \draw [black!25,dashed] ($(current page.north west) + (165mm,0)$) -- 
+        ($(current page.north west) + (165mm,-22.5mm)$);
+      \draw [black!25,dashed] ($(current page.south west) + (165mm,0)$) -- 
+        ($(current page.south west) + (165mm,22.5mm)$);
+    \else
+      \draw  [black!25,dashed] ($(current page.north west) + (0,-27.5mm)$) -- 
+        ($(current page.north west) + (\paperwidth-170mm,-27.5mm)$);
+      \draw  [black!25,dashed] ($(current page.south west) + (0,27.5mm)$) -- 
+        ($(current page.south west) + (\paperwidth-170mm,27.5mm)$);
+      \draw [black!25,dashed] ($(current page.north east) + (-165mm,0)$) -- 
+        ($(current page.north east) + (-165mm,-22.5mm)$);
+      \draw [black!25,dashed] ($(current page.south east) + (-165mm,0)$) -- 
+        ($(current page.south east) + (-165mm,22.5mm)$);
+    \fi
+  \end{tikzpicture}
+}
+
+\ifSclip
+
+  \includepdf[
+    pages={-},
+    noautoscale=true,
+    scale=1,
+    offset=-88mm 0mm
+  ]{cover/cover-page.pdf}
+  \cleardoublepage
+
+  \includepdf[
+    pages={-},
+    noautoscale=true,
+    scale=0.9125,
+    offset=2mm 0mm
+  ]{lic-thesis.pdf}
+
+  \includepdf[
+    pages={-},
+    noautoscale=true,
+    scale=1,
+    offset=-88mm 0mm
+  ]{cover/cover-page.pdf}
+
+\else
+
+  \includepdf[
+    pages={-},
+    noautoscale=true,
+    scale=1,
+    offset=-90mm 0mm
+  ]{cover/cover.pdf}
+
+  \includepdf[
+    pages={-},
+    noautoscale=true,
+    scale=1,
+    offset=-90mm 0mm
+  ]{cover/cover.pdf}
+
+  ~\showGuides\cleardoublepage
+
+  \includepdf[
+    pages={-},
+    noautoscale=true,
+    scale=0.9125,
+    offset=-19mm 0mm,
+    pagecommand={\showGuides}
+  ]{lic-thesis.pdf}
+\fi
+\end{document}
