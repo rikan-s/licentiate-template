@@ -384,7 +384,92 @@ where $L_i$ and $Q_i$ denote the lepton and quark $SU_L(2)$ doublets of generati
 m_f = \frac{Y_f v}{\sqrt{2}}.
 \end{equation}
 
-Therefore, the Higgs mechanism provides a unified framework for mass generation in the SM: the $W^\pm$ and $Z$ bosons acquire mass through their coupling to the Higgs VEV, fermions obtain mass via Yukawa couplings, and the photon remains massless as required by the unbroken $U_\mathrm{em}(1)$ symmetry. 
+Therefore, the Higgs mechanism provides a unified framework for mass generation in the SM: the $W^\pm$ and $Z$ bosons acquire mass through their coupling to the Higgs VEV, fermions obtain mass via Yukawa couplings, and the photon remains massless as required by the unbroken $U_\mathrm{em}(1)$ symmetry.
+
+
+\section{Shortcomings of the Standard Model}
+
+The SM, while being the most successful theory to date for describing fundamental particles and their interactions up to the TeV scale, is nonetheless believed to be an effective field theory that must be embedded in a more fundamental framework. Several theoretical and experimental observations point to physics beyond the Standard Model (BSM).
+
+\textbf{Gravity.} The SM does not incorporate general relativity. At the Planck scale ($M_P \sim 10^{19}$ GeV), quantum gravitational effects become important, yet no consistent quantum theory of gravity exists within the SM. The gravitational interaction is fundamentally different from the gauge interactions, and attempts to quantize gravity using standard QFT methods lead to a non-renormalizable theory.
+
+
+\textbf{Hierarchy problem.} The Higgs mass receives quadratic corrections from quantum loops:
+\begin{equation}
+\delta m_h^2 \sim \frac{\Lambda^2}{16\pi^2} \left( 6\lambda + \frac{3}{2}(g^2 + g'^2) - 12y_t^2 \right),
+\end{equation}
+where $\Lambda$ is the cutoff scale and $y_t$ is the top Yukawa coupling. If there is no new physics before the Planck scale, i.e. $\Lambda \sim M_P$, these corrections are $\mathcal{O}(10^{30})$ times larger than the physical Higgs mass, requiring extreme fine-tuning to maintain $m_h \sim 125$ GeV.
+
+\textbf{Dark matter.} Cosmological observations from galaxy rotation curves, gravitational lensing, and the cosmic microwave background indicate that approximately 27\% of the universe's energy density consists of dark matter. This matter interacts gravitationally but not electromagnetically, and the SM contains no viable dark matter candidate.
+
+\textbf{Neutrino masses.} Neutrino oscillation experiments demonstrate that neutrinos have non-zero masses and mix between flavors, contradicting the SM prediction of massless neutrinos. The observed mass scale $m_\nu \lesssim 0.1$ eV is orders of magnitude smaller than other fermion masses, suggesting a different mass generation mechanism such as the seesaw mechanism.
+
+\textbf{Matter-antimatter asymmetry.} The observed baryon asymmetry of the universe, quantified as $n_B/n_\gamma \sim 6 \times 10^{-10}$, requires CP violation beyond that present in the CKM matrix. The three Sakharov conditions for baryogenesis (baryon number violation, C and CP violation, and departure from thermal equilibrium) cannot be simultaneously satisfied within the SM.
+
+\textbf{Strong CP problem.} The QCD Lagrangian allows for a CP-violating term
+\begin{equation}
+\mathcal{L}_{\theta} = \frac{\theta g_s^2}{32\pi^2} G^A_{\mu\nu} \tilde{G}^{A\mu\nu},
+\end{equation}
+where $\tilde{G}^{A\mu\nu} = \frac{1}{2}\epsilon^{\mu\nu\rho\sigma}G^A_{\rho\sigma}$ is the dual field strength tensor. Experimental bounds on the neutron electric dipole moment constrain $|\theta| < 10^{-10}$, requiring unexplained fine-tuning of this dimensionless parameter.
+
+\textbf{Gauge coupling unification.} The three SM gauge couplings evolve differently with energy scale according to their renormalization group equations. When extrapolated to high energies, they do not unify at a single scale, theoretically suggesting the SM gauge group may be embedded in a larger unified structure.
+
+\subsection{Supersymmetry}
+
+Among the many proposed BSM theories, supersymmetry (SUSY) has been one of the most popular and widely studied. SUSY postulates a fundamental symmetry between bosons and fermions, predicting that each SM particle has a superpartner differing by spin-1/2, where bosonic superpartners are named with a prefix ``s-'' (e.g. squarks) and fermionic ones with a suffix ``-ino'' (e.g. gluinos). This symmetry, if realized in nature, would represent the first extension of spacetime symmetries beyond the Poincaré group. This is a unique feature of SUSY, as it is the only known theoretical framework that predicts the Poincaré symmetries as part of a larger, unified mathematical structure.
+
+The supersymmetry algebra extends the Poincaré algebra by introducing anticommuting spinorial generators $Q_\alpha$ and their conjugates $\bar{Q}_{\dot{\alpha}}$. These generators satisfy the fundamental anticommutation relation:
+\begin{equation}
+\{Q_\alpha, \bar{Q}_{\dot{\beta}}\} = 2\sigma^\mu_{\alpha\dot{\beta}} P_\mu,
+\end{equation}
+where $P_\mu$ is the four-momentum operator, $\sigma^\mu = (1, \vec{\sigma})$ with $\vec{\sigma}$ being the Pauli matrices, and $\alpha, \dot{\beta}$ are two-component spinor indices. All other anticommutators vanish: $\{Q_\alpha, Q_\beta\} = \{\bar{Q}_{\dot{\alpha}}, \bar{Q}_{\dot{\beta}}\} = 0$.
+
+
+Under a SUSY transformation, fields transform into their superpartners. The transformation is parameterized by an infinitesimal anticommuting spinor $\epsilon$. As a basic example, consider a supermultiplet containing a complex scalar field $\phi$ and its fermionic superpartner $\psi$ (a two-component Weyl spinor). The SUSY transformation acts on these fields as:
+\begin{align}
+\phi &\to \phi + \epsilon \psi, \\
+\psi &\to \psi + i\sigma^\mu \bar{\epsilon} \partial_\mu \phi + F\epsilon,
+\end{align}
+where $F$ is an auxiliary field (a non-propagating field with no kinetic term) that ensures the closure of the SUSY algebra. This means that the transformation turns bosons into fermions and vice versa, relating particles of different spin within the same supermultiplet.
+
+
+In the Minimal Supersymmetric Standard Model (MSSM), each SM particle is part of a supermultiplet. The particle content doubles:
+
+\begin{itemize}
+\item Quarks $q$ $\to$ squarks $\tilde{q}$ (spin-0)
+\item Leptons $\ell$ $\to$ sleptons $\tilde{\ell}$ (spin-0)
+\item Gauge bosons $\to$ gauginos: photino $\tilde{\gamma}$, winos $\tilde{W}^\pm$, zino $\tilde{Z}$, gluinos $\tilde{g}$ (spin-1/2)
+\item Higgs bosons $\to$ higgsinos $\tilde{H}$ (spin-1/2)
+\end{itemize}
+
+The MSSM requires two Higgs doublets, $H_u$ and $H_d$, unlike the single doublet in the SM. This is necessary because: the superpotential must be holomorphic (containing only fields, not their conjugates), preventing a single Higgs from giving mass to both up-type and down-type fermions; anomaly cancellation requires the fermionic higgsinos to come in vector-like pairs.
+
+If SUSY were exact, superpartners would have identical masses to their SM counterparts. Since no superpartners have been observed so far, SUSY must be broken. The breaking mechanism introduces soft SUSY-breaking terms that preserve the cancellation of quadratic divergences:
+\begin{equation}
+\mathcal{L}_{\text{soft}} = -\frac{1}{2} \sum_a M_a \lambda^a \lambda^a - \sum_{i,j} m^2_{ij} \tilde{\phi}_i^* \tilde{\phi}_j - \left( \sum_{i,j,k} A_{ijk} y_{ijk} \tilde{\phi}_i \tilde{\phi}_j \tilde{\phi}_k + \text{h.c.} \right),
+\end{equation}
+where $M_a$ are gaugino masses, $m^2_{ij}$ are scalar mass matrices, and $A_{ijk}$ are trilinear couplings.
+
+SUSY addresses several SM shortcomings:
+
+\textbf{Hierarchy problem.} Quadratic divergences from fermion loops are exactly canceled by their scalar superpartners. For instance, the top quark contribution to the Higgs mass is canceled by stop (top squark) loops:
+\begin{equation}
+\delta m_h^2|_{\text{top}} + \delta m_h^2|_{\text{stop}} = \frac{3y_t^2}{8\pi^2} \left( m_{\tilde{t}}^2 - m_t^2 \right) \ln\left(\frac{\Lambda^2}{m_{\tilde{t}}^2}\right),
+\end{equation}
+which is only logarithmically divergent rather than quadratically divergent. Even with $m_{\tilde{t}} \sim$ TeV (as required by current experimental bounds), this represents a significant improvement over the SM. The remaining fine-tuning is of order $(m_{\tilde{t}}/m_h)^2 \sim 100$, much less severe than the $(M_P/m_h)^2 \sim 10^{30}$ fine-tuning required in the SM.
+
+\textbf{Gauge coupling unification.} The presence of superpartners modifies the beta functions governing the renormalization group evolution of gauge couplings. In the MSSM, the three gauge couplings converge at a scale $M_{\text{GUT}} \sim 2 \times 10^{16}$ GeV:
+\begin{equation}
+\alpha_1(M_{\text{GUT}}) = \alpha_2(M_{\text{GUT}}) = \alpha_3(M_{\text{GUT}}) \equiv \alpha_{\text{GUT}} \approx 1/24,
+\end{equation}
+strongly suggesting an underlying grand unified theory.
+
+\textbf{Dark matter candidate.} If R-parity (defined as $R = (-1)^{3(B-L)+2S}$, where $B$ is baryon number, $L$ is lepton number, and $S$ is spin) is conserved, superpartners can only be produced in pairs and the lightest supersymmetric particle (LSP) is stable. A neutral LSP, typically the lightest neutralino (a mixture of neutral gauginos and higgsinos), provides a natural weakly interacting massive particle (WIMP) dark matter candidate.
+
+However, SUSY faces significant challenges. Despite extensive searches, no superpartners have been discovered at the LHC, pushing their masses above several TeV for strongly interacting superpartners, reintroduceing some degree of fine-tuning. Additionally, the MSSM introduces over 100 new parameters beyond the SM, requiring additional theoretical principles to constrain this parameter space.
+
+Despite these challenges, SUSY remains a mathematically well motivated BSM framework due to its theoretical structure and its potential to address multiple SM shortcomings. The search for supersymmetric particles continues to be a main objective of experimental particle physics.
+
 
 
 
