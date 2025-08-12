@@ -147,21 +147,21 @@
 % List of Papers
 %----------------------------------------------------------------------------
 
-\fancypagestyle{plain}
-{
-    \fancyhf{}
-    \fancyfoot[LE,RO]{\thepage}
-    \fancyfoot[RE,LO]{}
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
-}
+%\fancypagestyle{plain}
+%{
+%    \fancyhf{}
+%    \fancyfoot[LE,RO]{\thepage}
+%    \fancyfoot[RE,LO]{}
+%    \renewcommand{\headrulewidth}{0pt}
+%    \renewcommand{\footrulewidth}{0pt}
+%}
 
-\fancyhf{}
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[RE]{\sc\leftmark}
-\fancyhead[LO]{\sc\rightmark}
+%\fancyhf{}
+%\fancyhead[LE,RO]{\thepage}
+%\fancyhead[RE]{\sc\leftmark}
+%\fancyhead[LO]{\sc\rightmark}
 
-\input{front-matter/list-of-papers.tex}
+%\input{front-matter/list-of-papers.tex}
 
 %----------------------------------------------------------------------------
 % CONTENTS
@@ -169,11 +169,12 @@
 
 \cleardoublepage
 
-\pdfbookmark[1]{Table of Contents}{indexname}
-\chapter*{Contents}
-\markboth{Contents}{Contents}
-%\tableofcontents
-\tocwithouttitle
+%\pdfbookmark[1]{Table of Contents}{indexname}
+%\chapter*{Contents}
+%\markboth{Contents}{Contents}
+%\tocwithouttitle
+\tableofcontents
+
 
 \chapter*{Illustrations}
 \markboth{Illustrations}{Illustrations}
@@ -188,7 +189,7 @@
 
 \cleardoublepage
 
-\input{front-matter/preface.tex}
+%\input{front-matter/preface.tex}
 \input{front-matter/notation.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -235,18 +236,19 @@
 \fancyhead[CE]{\ChapterThumb}
 \fancyhead[CO]{\ChapterThumb}
 
-\phantomsection
-\addcontentsline{toc}{part}{Part I \;Comprehensive Summary}
+%\phantomsection
+%\addcontentsline{toc}{part}{Part I \;Comprehensive Summary}
 
 %----------------------------------------------------------------------------
 % MAIN TEXT
 %----------------------------------------------------------------------------
 
-\input{chapters/intro.tex}
+\input{chapters/abstract.tex}
+\input{chapters/summary-swe.tex}
 \input{chapters/chapter-2.tex}
 \input{chapters/chapter-3.tex}
 \input{chapters/summary.tex}
-\input{chapters/summary-swe.tex}
+
 
 %----------------------------------------------------------------------------
 % REFERENCES
@@ -327,105 +329,105 @@
 % Paper I
 %----------------------------------------------------------------------------
 
-\paperSection{I}
-  {Paper title}
-{Authors, 
-    \emph{Paper title}, 
-    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
-{1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
-\label{art:A} % PDF
+%\paperSection{I}
+%  {Paper title}
+%{Authors, 
+%   \emph{Paper title}, 
+%    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
+%{1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
+%\label{art:A} % PDF
 
-\renewcommand{\PaperSubFolioFontSize}{10}
-\setcounter{PaperSubFolio}{0}
+%\renewcommand{\PaperSubFolioFontSize}{10}
+%\setcounter{PaperSubFolio}{0}
 
-\ifSpaper
-  \includePDF{scale=0.96,offset=-2mm 0mm}
-\else
-  \includePDF{scale=1,offset=2mm 0mm}
-\fi
+%\ifSpaper
+%  \includePDF{scale=0.96,offset=-2mm 0mm}
+%\else
+%  \includePDF{scale=1,offset=2mm 0mm}
+%\fi
 
 %----------------------------------------------------------------------------
 % Paper II
 %----------------------------------------------------------------------------
 
-\paperSection{II}
-  {Paper title}
-  {Authors, 
-    \emph{Paper title}, 
-    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
-  {1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
-\label{art:B}
+%\paperSection{II}
+%  {Paper title}
+%  {Authors, 
+%    \emph{Paper title}, 
+%    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
+%  {1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
+%\label{art:B}
 
-\renewcommand{\PaperSubFolioFontSize}{10}
-\setcounter{PaperSubFolio}{0}
+%\renewcommand{\PaperSubFolioFontSize}{10}
+%\setcounter{PaperSubFolio}{0}
 
-\ifSpaper
-  \includePDF{scale=0.96,offset=-2mm 0mm}
-\else
-  \includePDF{scale=1,offset=2mm 0mm}
-\fi
+%\ifSpaper
+%  \includePDF{scale=0.96,offset=-2mm 0mm}
+%\else
+%  \includePDF{scale=1,offset=2mm 0mm}
+%\fi
 
 %----------------------------------------------------------------------------
 % Paper III
 %----------------------------------------------------------------------------
 
-\paperSection{III}
-  {Paper title}
-{Authors, 
-    \emph{Paper title}, 
-    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
-{1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
-\label{art:C}
+%\paperSection{III}
+%  {Paper title}
+%{Authors, 
+%    \emph{Paper title}, 
+%    [\href{https://arxiv.org/abs/1708.07833}{1708.07833}]}
+%{1708-07833}{2}{\ifSpaper 8.7 \else 20 \fi}
+%\label{art:C}
 
-\renewcommand{\PaperSubFolioFontSize}{10}
-\setcounter{PaperSubFolio}{0}
+%\renewcommand{\PaperSubFolioFontSize}{10}
+%\setcounter{PaperSubFolio}{0}
 
-\ifSpaper
-  \includePDF{scale=0.87,offset=-2mm 0mm}
-\else
-  \includePDF{scale=0.98,offset=1mm 0mm}
-\fi
+%\ifSpaper
+%  \includePDF{scale=0.87,offset=-2mm 0mm}
+%\else
+%  \includePDF{scale=0.98,offset=1mm 0mm}
+%\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Show LAYOUT INFO (optional)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\pagestyle{empty}
+%\pagestyle{empty}
 
-\ifShowLayout
-  \setcounter{chapter}{1}
-  \phantomsection
-  \renewcommand*{\FrameEdgeColor}{blue!40}
-  \renewcommand*{\ShowSubGridColor}{gray!40}
-  \renewcommand*{\ShowGridColor}{gray!70}
-  \renewcommand*{\ShowFrameColor}{\color{red!40}}
-  \renewcommand*{\ShowGridTextColor}{gray}
-  % \renewcommand*{\ShowFramePicture}{}
-  \AddToShipoutPictureBG{
-     \ThumbBoxLarge{Paper~L}{0}
-     \ThumbBox{Tab 5}{4}
-     \ThumbBox{Tab 10}{9}
-  }
-  \noindent
-  % \textsf{\textbf{Layout info}}\\[2mm]
-  \setvaluestextsize{\footnotesize}
-  \footnotesize
-  \printinunitsof{mm}{\pagevalues}\\
-  ~\verb| \marginparwidth| = 
-  \printinunitsof{mm}\prntlen{\marginparwidth}
-  ~\verb|   \TopOffset| = 
-  \printinunitsof{mm}\prntlen{\TopOffset}\\
-  ~\verb| \FontSize| = \FontSize
-  \ifSpaper
-     \setlayoutscale{0.45}
-  \else
-     \setlayoutscale{0.5}
-  \fi
-  \pagediagram
-  \setvaluestextsize{\normalsize}
-  \normalsize
-\else
-  ~
-\fi
+%\ifShowLayout
+%  \setcounter{chapter}{1}
+%  \phantomsection
+%  \renewcommand*{\FrameEdgeColor}{blue!40}
+%  \renewcommand*{\ShowSubGridColor}{gray!40}
+%  \renewcommand*{\ShowGridColor}{gray!70}
+%  \renewcommand*{\ShowFrameColor}{\color{red!40}}
+%  \renewcommand*{\ShowGridTextColor}{gray}
+%  % \renewcommand*{\ShowFramePicture}{}
+%  \AddToShipoutPictureBG{
+%     \ThumbBoxLarge{Paper~L}{0}
+%     \ThumbBox{Tab 5}{4}
+%     \ThumbBox{Tab 10}{9}
+%  }
+%  \noindent
+%  % \textsf{\textbf{Layout info}}\\[2mm]
+%  \setvaluestextsize{\footnotesize}
+%  \footnotesize
+%  \printinunitsof{mm}{\pagevalues}\\
+%  ~\verb| \marginparwidth| = 
+%  \printinunitsof{mm}\prntlen{\marginparwidth}
+%  ~\verb|   \TopOffset| = 
+%  \printinunitsof{mm}\prntlen{\TopOffset}\\
+%  ~\verb| \FontSize| = \FontSize
+%  \ifSpaper
+%     \setlayoutscale{0.45}
+%  \else
+%     \setlayoutscale{0.5}
+%  \fi
+%  \pagediagram
+%  \setvaluestextsize{\normalsize}
+%  \normalsize
+%\else
+%  ~
+%\fi
 
 \end{document}
